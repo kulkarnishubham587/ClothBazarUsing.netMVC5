@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ClothBazar.Database
 {
-    public class CBContext : DbContext
+    public class CBContext : DbContext,IDisposable
     {
-        public CBContext() : base()
+        public CBContext() : base("CBConnection")
         {
            
         }
