@@ -15,6 +15,14 @@ namespace Eshop.Controllers
         CategoriesService categoriesService = new CategoriesService();
 
 
+        [HttpGet]
+        public ActionResult Index()
+        {
+             var listofcategory = categoriesService.ShowAllCategories();
+            return View(listofcategory);
+        }
+
+
         // get Category
         [HttpGet]
         public ActionResult Create()
@@ -28,7 +36,23 @@ namespace Eshop.Controllers
         public ActionResult Create(Category category)
         {
             categoriesService.SaveCategory(category);
-            return View();
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var category = categoriesService.GetById(id);
+            return View(category);
+        }
+
+        //Edit Category
+        [HttpPost]
+        public ActionResult Edit(Category category)
+        {
+            categoriesService.EditCategory(category);
+            return RedirectToAction("Index");
         }
     }
 }

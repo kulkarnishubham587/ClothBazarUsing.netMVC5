@@ -17,5 +17,24 @@ namespace ClothBazar.Service
             db.Categories.Add(category);
             db.SaveChanges();
         }
+
+        public List<Category> ShowAllCategories()
+        {
+            return db.Categories.ToList();
+        }
+
+
+        public Category GetById(int id)
+        {
+            return db.Categories.Find(id);
+        }
+
+        public void EditCategory(Category category)
+        {
+            db.Entry(category).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+        }
+
+
     }
 }
