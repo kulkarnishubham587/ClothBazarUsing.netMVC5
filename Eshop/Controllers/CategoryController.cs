@@ -54,5 +54,21 @@ namespace Eshop.Controllers
             categoriesService.EditCategory(category);
             return RedirectToAction("Index");
         }
+
+        //Delete 
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var category = categoriesService.GetById(id);
+            return View(category);
+        }
+
+        [HttpPost]
+        public ActionResult Delete( Category category)
+        { 
+            var categories = categoriesService.GetById(category.ID);
+            categoriesService.Delete(categories);
+            return RedirectToAction("Index");
+        }
     }
 }

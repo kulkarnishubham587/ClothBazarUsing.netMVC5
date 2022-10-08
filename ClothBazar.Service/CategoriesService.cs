@@ -35,6 +35,11 @@ namespace ClothBazar.Service
             db.SaveChanges();
         }
 
-
+        public void Delete(Category category)
+        {
+            //db.Entry(category).State = System.Data.Entity.EntityState.Deleted; 
+            db.Categories.Remove(category);
+            db.SaveChanges();
+        }
     }
 }
