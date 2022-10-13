@@ -3,14 +3,22 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create Category</h2>
-<form method="post">
-    <label>Name</label>
-    <input name="Name" />
-    </br>
-    <label>Description</label>
-    <input name="Description" />
-    </br>
-    <button type="submit">Save</button>
+<h2 style="margin:auto;width:300px">Create Category</h2>
+<div class="row">
+    <div class="col-md-8 offset-2" style="margin-left:400px;margin-top:30px">
+        <form method="post">
+            <input type="hidden" name="ID" />
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input class="form-control" name="Name">
 
-</form>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input class="form-control" name="Description" />
+
+            </div>
+            <button type="submit" class="btn btn-success" style="margin-top:30px">Add</button>
+        </form>
+    </div>
+</div>

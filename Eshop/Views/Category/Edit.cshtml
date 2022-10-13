@@ -5,11 +5,11 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Category</h2>
+<h2 style="margin:auto;width:300px">Edit Category</h2>
 
-<form method="post">
+@*<form method="post" >
     <input type="hidden" name="ID" value="@Model.ID "
-    <label>Name</label>
+    <label></label>
     <input name="Name" value="@Model.Name" />
     </br>
     <label>Description</label>
@@ -17,4 +17,22 @@
     </br>
     <button type="submit">Save</button>
 
-</form>
+</form>*@
+<div class="row">
+    <div class="col-md-8 offset-2" style="margin-left:400px;margin-top:30px">
+        <form method="post">
+            <input type="hidden" name="ID" value="@Model.ID " />
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input class="form-control" name="Name" value="@Model.Name">
+
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input class="form-control" name="Description" value="@Model.Description">
+
+            </div>
+            <button type="submit" class="btn btn-success" style="margin-top:30px">Save</button>
+        </form>
+    </div>
+</div>

@@ -3,16 +3,17 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h1 style="margin:auto;width:300px">Delete</h1>
 
 <form method="post">
-    <h1>Are you sure u want to delete this category? @Model.Name</h1>
-    <input type="hidden" name="ID" value="@Model.ID "/>
-   
-    
+    <h3 class="text-danger">Are you sure u want to delete this category with name @Model.Name</h3>
+    <input type="hidden" name="ID" value="@Model.ID " />
+
+
     </br>
-    <button type="submit">Yes Delete</button>
+    <a class="btn btn-warning" href="/category/Index">Cancel</a>
+    <button style="margin-left:500px" class="btn btn-danger" type="submit">Yes Delete</button>
 
 </form>
 
-<a href="/Index">Cancel</a>
+
