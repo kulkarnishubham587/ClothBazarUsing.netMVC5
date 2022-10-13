@@ -1,14 +1,54 @@
-﻿@model List<ClothBazar.Entities.Category>
+﻿@model IEnumerable<ClothBazar.Entities.Category>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>List of all Categories</h2>
+<h2 style="margin:auto;width:300px">List of all Categories</h2>
 
-@foreach (var item in Model)
-{
-    <h1>@item.Name</h1>
-    <h2>@item.Description</h2>
 
-}
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(Model => Model.Name)</th>
+            <th scope="col">@Html.DisplayNameFor(Model => Model.Description)</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>
+                    <button id="EditBtn" Cid="@item.ID" class="btn btn-primary">Edit</button>
+                    <button id="DltBtn"   Cid="@item.ID" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    }
+    </table>
+ <script>
+     $("#EditBtn").click(function () {
+         $.ajax({
+             url: '/category/edit',
+             data: {
+                 ID: $(this).attr('Cid')
+             }
+         }).done(function (response) {
+             alert(response);
+         }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+             alert("Fail");
+         });
+         
+     });
+
+    
+
+ </script>
+
 
