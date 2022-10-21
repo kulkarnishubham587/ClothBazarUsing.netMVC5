@@ -12,7 +12,8 @@ namespace ClothBazar.Entities
         public double Price { get; set; }
 
         //relationship
-        public Category Category { get; set; }
+
+        public virtual Category Category { get; set; }
 
     }
 }

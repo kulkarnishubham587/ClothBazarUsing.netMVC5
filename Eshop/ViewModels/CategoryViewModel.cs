@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace ClothBazar.Entities
+namespace Eshop.ViewModels
 {
-    public class BaseEntity
+    public class NewCategoryViewModel
     {
-        public int ID { get; set; }
         public string Name { get; set; }
-
         public string ImgURL { get; set; }
+
         public string Description { get; set; }
+
+        public double Price { get; set; }
+
+        public int CategoryID{ get; set; }
+
     }
 }

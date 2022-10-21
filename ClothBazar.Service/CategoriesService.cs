@@ -3,14 +3,33 @@ using ClothBazar.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
 
 namespace ClothBazar.Service
-{
+{   
+
     public class CategoriesService
     {
+
+        #region SingleTon
+        public static CategoriesService Instance 
+        { get
+            { 
+            if(PrivateInstance == null)
+            PrivateInstance = new CategoriesService();
+            return PrivateInstance;
+            
+            }
+        }
+
+        private static CategoriesService PrivateInstance { get; set; }
+
+        private CategoriesService() { }
+        #endregion
+
         CBContext db = new CBContext();
         public void SaveCategory(Category category)
         {
@@ -20,7 +39,7 @@ namespace ClothBazar.Service
 
         public List<Category> ShowAllCategories()
         {
-            return db.Categories.ToList();
+            return db.Categories.Include(y => y.Products).ToList();
         }
 
 

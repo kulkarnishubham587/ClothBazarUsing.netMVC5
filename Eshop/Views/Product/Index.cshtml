@@ -1,9 +1,79 @@
-﻿
+﻿@model IEnumerable<ClothBazar.Entities.Product>
 @{
     ViewBag.Title = "Index";
 }
-@{
-    Html.RenderAction("ProductTable");
-    //Html.RenderAction("Create");
+
+<div>
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success !</strong> @TempData["AlertMessage"]
+        </div>
+    }
+
+
+</div>
+</br>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<h2 style="margin:auto;width:300px">List of all products</h2>
+<a style="margin-left:1100px;margin-top:20px;margin-bottom:20px" href="/product/create" class="btn btn-success">Add new</a> @*Action methodanem ,"kshyane del krycah"*@
+
+
+@foreach (var item in Model)
+{
+
+    <div class=" col-md-4">
+        <div class="height d-flex justify-content-center align-items-center">
+
+            <div class="card" style="background-color:aliceblue;width:250px;">
+
+                <div class="d-flex justify-content-between align-items-center ">
+                    <div class="mt-2">
+                        @*<button class="editBtn btn btn-primary" style="margin-right: 20px;margin-bottom:10px" data-id="@item.ID">Edit</button>
+                        <button class="deleteBtn btn btn-warning" style="margin-left: 108px;margin-bottom:10px" data-id="@item.ID">Delete</button>*@
+                          <a href="@Url.Action("Edit", new {@item.ID})" class="btn btn-primary" style="margin-right: 20px;margin-bottom:10px">Edit</a>
+                           <a href="@Url.Action("Delete", new {@item.ID})" onclick = "return confirm('Are you sure you want to delete?')" class="btn btn-warning" style="margin-left: 108px;margin-bottom:10px">Delete</a>
+                        <h4 class="text-uppercase" style="text-align: center; height: 30px;">@item.Name</h4>
+                        <h6 class="text-uppercase" style="text-align: center;">@item.Category.Name</h6>
+                    </div>
+                    <div class="image">
+                        <img src="@item.ImgURL" style="margin-left:25px" width="200px" height="200px">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-2 mb-2">
+
+
+                </div>
+
+
+                <p style="text-align:center;width:200px ; height:70px; ">@item.Description </p>
+                @*<button class="addtoCart" data-id="@item.ID">Add To Cart</button>*@
+                <button class="addtoCart btn btn-primary" style="margin-left:75px;" data-id="@item.ID">Add to cart</button>
+            </div>
+
+        </div>
+        <br />
+    </div>
 }
 
+
+<script>
+
+    var products = [];
+    $(".addtoCart").click(function () {
+        var productID = $(this).attr('data-id');
+
+        products.push(productID);
+
+        $.cookie('CartProducts', products.join('-'),{path:'/'} );
+
+        alert("Product added to Cart.");
+    });
+
+   
+
+
+
+</script>

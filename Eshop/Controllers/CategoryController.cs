@@ -11,14 +11,14 @@ namespace Eshop.Controllers
 {
     public class CategoryController : Controller
     {
-
-        CategoriesService categoriesService = new CategoriesService();
+         
+        //CategoriesService categoriesService = new CategoriesService();
 
 
         [HttpGet]
         public ActionResult Index()
         {
-             var listofcategory = categoriesService.ShowAllCategories();
+             var listofcategory = CategoriesService.Instance.ShowAllCategories();
             return View(listofcategory);
         }
 
@@ -35,7 +35,7 @@ namespace Eshop.Controllers
         [HttpPost]
         public ActionResult Create(Category category)
         {
-            categoriesService.SaveCategory(category);
+            CategoriesService.Instance.SaveCategory(category);
             return RedirectToAction("Index");
         }
 
@@ -43,7 +43,7 @@ namespace Eshop.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var category = categoriesService.GetById(id);
+            var category = CategoriesService.Instance.GetById(id);
             return View(category);
         }
 
@@ -51,7 +51,7 @@ namespace Eshop.Controllers
         [HttpPost]
         public ActionResult Edit(Category category)
         {
-            categoriesService.EditCategory(category);
+            CategoriesService.Instance.EditCategory(category);
             return RedirectToAction("Index");
         }
 
@@ -59,15 +59,15 @@ namespace Eshop.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var category = categoriesService.GetById(id);
+            var category = CategoriesService.Instance.GetById(id);
             return View(category);
         }
 
         [HttpPost]
         public ActionResult Delete( Category category)
         { 
-            var categories = categoriesService.GetById(category.ID);
-            categoriesService.Delete(categories);
+            var categories = CategoriesService.Instance.GetById(category.ID);
+            CategoriesService.Instance.Delete(categories);
             return RedirectToAction("Index");
         }
     }

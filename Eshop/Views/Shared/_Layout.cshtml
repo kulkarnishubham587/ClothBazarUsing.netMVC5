@@ -1,5 +1,41 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
+
+<style>
+    #Footer {
+        background-color: rgb(41, 41, 41);
+        height: 90%;
+        color: rgb(228, 222, 222);
+        text-align: center;
+    }
+
+
+    #aboutUsContent, .card-body {
+        opacity: 0.7;
+        color: rgb(228, 222, 222);
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        height:120px
+
+    }
+
+
+    #BottomArrow, #BottomArrow2 {
+        color: rgb(36, 59, 78);
+        background-color: antiquewhite;
+    }
+
+    #UpArrow {
+        height: 40px;
+        width: 60px;
+    }
+
+    #InstaLogo, #FacebookLogo, #TwitterLogo, #LinkedinLogo {
+        height: 40px;
+        width: 40px;
+       
+    }
+</style>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +44,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -30,13 +67,63 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+       
+        
     </div>
 
-    
+    <div style="margin-top:100px">
+       
+        <div>
+            
+            <div class="row p-2 mb-0">
+                <div class="col-sm-6">
+                    <div class="card" id="Footer">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-uppercase">About Us</h5>
+                            <p class="card-text" id='aboutUsContent'>
+                                Welcome , your number one source for all type of product -
+                                Electronics, Toys, Books, Cloths, etc. . We're dedicated to giving you the very best of products,
+                                with a focus on three characteristics dependability, customer service and uniqueness.
+                                <br/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card" id="Footer">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-uppercase">Get in touch </h5>
+                            <h6 id='contactUsContent'>Hey! We're happy to help you.</h6>
+                            <p id='connectUs' class="card-text">connect us here :</p>
+
+                            <a href="https://www.instagram.com/" target="_blank">
+                                <img id="InstaLogo" class="img-thumbnail rounded p-0 m-2" alt="Instagram" src={InstaLogo} />
+                            </a>
+                            <a href="https://www.facebook.com/" target="_blank">
+                                <img id="FacebookLogo" class="img-thumbnail rounded p-0 m-2" alt="Facebook" src={FacebookLogo} />
+                            </a>
+                            <a href="https://www.twitter.com/" target="_blank">
+                                <img id="TwitterLogo" class="img-thumbnail rounded p-0 m-2" alt="Twitter" src={TwitterLogo} />
+                            </a>
+                            <a href="https://www.linkedin.com/" class="logo " target="_blank">
+                                <img id="LinkedinLogo" class="img-thumbnail rounded p-0 m-2" alt="LinkedIn" src={LinkedinLogo} />
+                            </a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <footer class="p-3 bg-light text-white text-center position-relative">
+                <div class="container">
+                    <p class="lead">Copyright &copy; 2022 E-Commerce Shopping System </p>
+
+                </div>
+            </footer>
+        </div>
+    </div>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

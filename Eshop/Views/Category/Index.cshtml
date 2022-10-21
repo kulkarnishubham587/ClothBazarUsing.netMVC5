@@ -15,18 +15,20 @@
         <tr>
             <th style="text-align:center" scope="col">@Html.DisplayNameFor(Model => Model.Name)</th>
             <th style="text-align:center" scope="col">@Html.DisplayNameFor(Model => Model.Description)</th>
+            <th style="text-align:center" scope="col">Product Count</th>
             <th style="text-align:center" scope="col">Action</th>
         </tr>
     </thead>
     @foreach (var item in Model)
-    {
+    {  
         <tbody>
             <tr>
                 <td style="text-align:center">@item.Name</td>
                 <td style="text-align:center">@item.Description</td>
+                 <td style="text-align:center">@item.Products.Count</td>
                 <td style="text-align:center">
                     <a href="@Url.Action("Edit", new {@item.ID})" class="btn btn-warning" style="margin-right: 20px;">Edit</a>
-                    <a href="@Url.Action("Delete", new {@item.ID})" class="btn btn-danger" >Delete</a> @*Action methodanem ,"kshyane del krycah"*@
+                    <a href="@Url.Action("Delete", new {@item.ID})" class="btn btn-danger">Delete</a> @*Action methodanem ,"kshyane del krycah"*@
                 </td>
             </tr>
         </tbody>

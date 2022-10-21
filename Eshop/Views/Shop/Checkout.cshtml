@@ -1,0 +1,30 @@
+﻿@model Eshop.ViewModels.CheckoutViewModels
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout</h2>
+
+@if (Model != null)
+{
+    if (Model.CartProducts != null && Model.CartProducts.Count > 0)
+    {
+        
+        <div>
+            @foreach (var product in Model.CartProducts)
+            {
+                var productQty = Model.CartProductIDs.Where(x => x == product.ID).Count();
+                <div>Name - @product.Name : price -  @product.Price :qty - @productQty  : Totalprice = @(productQty*product.Price)</div>
+
+                
+            }
+
+            <div>Total Bill = @Model.CartProducts.Sum(x => x.Price * Model.CartProductIDs.Where(y => y == x.ID).Count())</div>
+        </div>
+    }
+    else
+    { 
+      <div>No products</div>
+    }
+}
+
